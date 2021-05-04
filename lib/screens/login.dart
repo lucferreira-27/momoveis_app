@@ -22,6 +22,7 @@ class Login extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(_appBarTitle),
+        automaticallyImplyLeading: false
       ),
       body: Container(
         child: Column(

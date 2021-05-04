@@ -40,7 +40,12 @@ dev_dependencies:
 flutter:
   assets:
     - images/logo.png
-
+    - images/grupos/escritorio.png    
+    - images/grupos/sala.png
+    - images/grupos/quintal.png
+    - images/grupos/quarto.png
+    - images/grupos/garagem.png
+    - images/grupos/cozinha.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

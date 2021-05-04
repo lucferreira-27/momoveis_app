@@ -1,9 +1,11 @@
+
+
+import 'package:app_momoveis/screens/home.dart';
+import 'package:app_momoveis/screens/local.dart';
 import 'package:app_momoveis/screens/login.dart';
+import 'package:app_momoveis/screens/moveis_grupo.dart';
 import 'package:app_momoveis/screens/responsaveis.dart';
 import 'package:flutter/material.dart';
-
-import 'screens/home.dart';
-import 'screens/moveis_grupo.dart';
 
 void main() {
   runApp(MomoveisApp());
@@ -27,6 +29,7 @@ class MomoveisApp extends StatelessWidget {
         '/login': (context) => Login(),
         '/home': (context) => Home(),
         '/grupo': (context) => GrupoMoveis(),
+        '/grupo/local': (context) => GrupoLocal(),
         '/responsaveis': (context) => Responsaveis(),
 
       },

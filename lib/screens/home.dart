@@ -2,11 +2,9 @@ import 'package:app_momoveis/components/menu_item.dart';
 import 'package:app_momoveis/model/usuario.dart';
 import 'package:flutter/material.dart';
 
-
 const String _appBarTitle = "Menu";
 const String _itemGrupoMoveis = "Grupo Móveis";
 const String _itemResponsaveis = "Responsaveis";
-
 
 class Home extends StatefulWidget {
   @override
@@ -18,11 +16,14 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final Usuario usuario = ModalRoute.of(context).settings.arguments;
 
- //   String username = usuario == null ? "unknow" : usuario.username;
+    //   String username = usuario == null ? "unknow" : usuario.username;
     String username = usuario.username;
 
     return Scaffold(
-        appBar: AppBar(title: Text(_appBarTitle)),
+        appBar:
+            AppBar(
+              title: Text(_appBarTitle),
+             automaticallyImplyLeading: false),
         backgroundColor: Color.fromRGBO(38, 50, 56, 1),
         body: Column(
           children: [
@@ -58,7 +59,7 @@ class _HomeState extends State<Home> {
   }
 
   _criarMenuItem(String nome, IconData icon, Function onPress) {
-   return Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         MenuItem(
