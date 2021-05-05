@@ -4,9 +4,14 @@ import 'item.dart';
 
 class Grupo {
   final String nome;
-  final List<Item> items;
+  final List<Item> items = [];
   final String image;
-  Grupo(this.nome, this.items, this.image);
+  Grupo(this.nome, this.image);
 
+  @override
+  String toString() {
+    // TODO: implement toString
+    return "$nome, ${items.length}, $image";
+  }
   
 }

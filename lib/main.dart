@@ -1,5 +1,6 @@
 
 
+import 'package:app_momoveis/screens/formulario_item.dart';
 import 'package:app_momoveis/screens/home.dart';
 import 'package:app_momoveis/screens/local.dart';
 import 'package:app_momoveis/screens/login.dart';
@@ -31,6 +32,7 @@ class MomoveisApp extends StatelessWidget {
         '/grupo': (context) => GrupoMoveis(),
         '/grupo/local': (context) => GrupoLocal(),
         '/responsaveis': (context) => Responsaveis(),
+        '/formulario': (context) => FormularioItem(),
 
       },
     );

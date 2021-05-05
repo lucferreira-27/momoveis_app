@@ -2,28 +2,40 @@ import 'package:app_momoveis/model/grupo.dart';
 import 'package:flutter/material.dart';
 
 class GrupoPanel extends StatelessWidget {
-  
   final Grupo grupo;
   final Function onTap;
   final double height;
   final double weight;
-  
-  GrupoPanel({this.grupo, this.onTap, this.height = 230, this.weight = 350});
+  final bool label;
+  GrupoPanel({this.grupo, this.onTap, this.height = 230, this.weight = 350, this.label = true});
 
   @override
   Widget build(BuildContext context) {
+
+    var grupoPanel = label  ? adicionarPanel() : adicionarPanelSemLabel();
+
     return InkWell(
       borderRadius: BorderRadius.circular(5),
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: Container(
-            child: adicionarLabel(grupo.nome),
-            height: height,
-            width: weight,
-            decoration: adicionarImagem(grupo.image)),
+        child: grupoPanel,
       ),
     );
+  }
+
+  Container adicionarPanel() {
+    return Container(
+        child: adicionarLabel(grupo.nome),
+        height: height,
+        width: weight,
+        decoration: adicionarImagem(grupo.image));
+  }
+    Container adicionarPanelSemLabel() {
+    return Container(
+        height: height,
+        width: weight,
+        decoration: adicionarImagem(grupo.image));
   }
 
   Row adicionarLabel(String label) {

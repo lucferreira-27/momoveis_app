@@ -10,19 +10,19 @@ class GrupoMoveis extends StatelessWidget {
       backgroundColor: Color.fromRGBO(38, 50, 56, 1),
       body: ListView(
         children: [
-          _criarGrupoPanel(context,"Cozinha", "images/grupos/cozinha.png", null),
-          _criarGrupoPanel(context,"Escritorio", "images/grupos/escritorio.png", null),
-          _criarGrupoPanel(context,"Quarto", "images/grupos/quarto.png", null),
-          _criarGrupoPanel(context,"Quintal", "images/grupos/quintal.png", null),
-          _criarGrupoPanel(context,"Garagem", "images/grupos/garagem.png", null),
+          _criarGrupoPanel(context,"Cozinha", "images/grupos/cozinha.png"),
+          _criarGrupoPanel(context,"Escritorio", "images/grupos/escritorio.png"),
+          _criarGrupoPanel(context,"Quarto", "images/grupos/quarto.png"),
+          _criarGrupoPanel(context,"Quintal", "images/grupos/quintal.png"),
+          _criarGrupoPanel(context,"Garagem", "images/grupos/garagem.png"),
         ],
       ),
     );
   }
 
   _criarGrupoPanel(
-      BuildContext context, String nome, String caminho, Function onPress) {
-    Grupo _grupo = new Grupo(nome, null, caminho);
+      BuildContext context, String nome, String caminho) {
+    Grupo _grupo = new Grupo(nome, caminho);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
