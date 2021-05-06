@@ -13,18 +13,21 @@ class MenuItem extends StatelessWidget {
       onTap: onPress,
       child: Container(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Icon(
-              icon,
-              size: 36,
-              color: Colors.white,
+            Padding(
+              padding: EdgeInsets.only(left: 30),
+              child: Icon(
+                icon,
+                size: 36,
+                color: Colors.white,
+              ),
             ),
-            Center(
+            Padding(
+                padding: EdgeInsets.all(30),
                 child: Text(
-              nome,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-            ))
+                  nome,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                ))
           ],
         ),
         height: 135,

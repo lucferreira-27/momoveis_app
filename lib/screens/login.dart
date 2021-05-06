@@ -14,16 +14,12 @@ class Login extends StatelessWidget {
   final TextEditingController _controllerSenha = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
   final Usuario _usuario = new Usuario();
-  
+
   @override
   Widget build(BuildContext context) {
-    
-    
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_appBarTitle),
-        automaticallyImplyLeading: false
-      ),
+      appBar:
+          AppBar(title: Text(_appBarTitle), automaticallyImplyLeading: false),
       body: Container(
         child: Column(
           children: [
@@ -84,26 +80,33 @@ class Login extends StatelessWidget {
         ),
       ),
     );
-    
   }
+
   _login(BuildContext context) {
     if (_formKey.currentState.validate()) {
-        Navigator.pushNamed(context,'/home',arguments: _usuario);
+      Navigator.pushNamed(context, '/home', arguments: _usuario);
     }
   }
 
-
   _verificaSenha(String senha) {
+    /*
     if (senha == "adm") {
       return true;
     }
+    
     return false;
+    */
+    return true;
   }
 
   _verificaUsuario(String usuario) {
+    /*
     if (usuario == "adm") {
       return true;
     }
     return false;
+  
+  */
+    return true;
   }
 }

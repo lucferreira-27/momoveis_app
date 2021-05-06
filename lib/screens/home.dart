@@ -1,4 +1,5 @@
 import 'package:app_momoveis/components/menu_item.dart';
+import 'package:app_momoveis/model/imovel.dart';
 import 'package:app_momoveis/model/usuario.dart';
 import 'package:flutter/material.dart';
 
@@ -15,17 +16,15 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final Usuario usuario = ModalRoute.of(context).settings.arguments;
-
+    final Imovel imovel = new Imovel([]);
     //   String username = usuario == null ? "unknow" : usuario.username;
     String username = usuario.username;
 
     return Scaffold(
         appBar:
-            AppBar(
-              title: Text(_appBarTitle),
-             automaticallyImplyLeading: false),
+            AppBar(title: Text(_appBarTitle), automaticallyImplyLeading: false),
         backgroundColor: Color.fromRGBO(38, 50, 56, 1),
-        body: Column(
+        body: ListView(
           children: [
             Row(
               children: [
@@ -46,11 +45,29 @@ class _HomeState extends State<Home> {
             Container(
               child: Column(
                 children: [
-                  _criarMenuItem(_itemGrupoMoveis, Icons.local_hotel,
-                      () => Navigator.pushNamed(context, '/grupo')),
+                  _criarMenuItem(
+                      _itemGrupoMoveis,
+                      Icons.local_hotel,
+                      () => Navigator.pushNamed(context, '/grupos',
+                              arguments: imovel)
+                          .then((imovelRecebido) =>
+                              {imovel.grupos.setAll(0, imovelRecebido)})),
                   SizedBox(height: 20),
-                  _criarMenuItem(_itemResponsaveis, Icons.group,
-                      () => Navigator.pushNamed(context, '/responsaveis'))
+                  _criarMenuItem(
+                      "Itens",
+                      Icons.list,
+                      () => Navigator.pushNamed(context, '/itens',
+                          arguments: imovel)),
+                  SizedBox(height: 20),
+                  _criarMenuItem(
+                      _itemResponsaveis,
+                      Icons.group,
+                      () => Navigator.pushNamed(context, '/responsaveis',
+                          arguments: imovel)),
+                  SizedBox(height: 20),
+                  _criarMenuItem("Sobre", Icons.info,
+                      () => Navigator.pushNamed(context, '/sobre')),
+                  SizedBox(height: 20),
                 ],
               ),
             )

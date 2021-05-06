@@ -12,12 +12,10 @@ class GrupoLocal extends StatefulWidget {
 class _GrupoLocalState extends State<GrupoLocal> {
   @override
   Widget build(BuildContext context) {
+    debugPrint("Build: GrupoLocalState");
     final Grupo _grupo = ModalRoute.of(context).settings.arguments;
 
-    final List<Item> entries = _grupo.items;
-
-
-
+    var future;
     return Scaffold(
       appBar: AppBar(
         title: Text("Local"),
@@ -64,33 +62,38 @@ class _GrupoLocalState extends State<GrupoLocal> {
               ),
             ),
             Container(
-                width: 405,
-                height: 252,
+              width: MediaQuery.of(context).size.width - 50,
+                  height: MediaQuery.of(context).size.height- 250,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.white,
                 ),
                 child: ListView.builder(
                     padding: const EdgeInsets.all(12),
-                    itemCount: entries.length,
+                    itemCount: _grupo.items.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Container(
-                        margin: EdgeInsets.all(6),
-                        height: 25,
-                        color: Colors.grey[400],
-                        child: Center(child: Text('${entries[index].nome}')),
-                      );
+                          margin: EdgeInsets.all(6),
+                          height: 25,
+                          color: Colors.grey[400],
+                          child: Center(
+                            child: Text('${_grupo.items[index].nome}'),
+                          ));
                     }))
           ]),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => {
-
-          Navigator.pushNamed(context, '/formulario', arguments: _grupo)
-
+          Navigator.pushNamed(context, '/formulario').then((itemRecebido) => {
+                setState(() => {
+                  if(itemRecebido != null)
+                    _grupo.items.add(itemRecebido)
+                  })
+              })
         },
-        child: Icon(Icons.add,
+        child: Icon(
+          Icons.add,
           color: Colors.grey[600],
         ),
         backgroundColor: Colors.white,

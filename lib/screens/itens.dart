@@ -1,12 +1,13 @@
 import 'package:app_momoveis/model/imovel.dart';
 import 'package:app_momoveis/model/item.dart';
+import 'package:app_momoveis/screens/formulario_item.dart';
 import 'package:flutter/material.dart';
 
-const String _appTitle = "Todos Responsáveis";
-const String _listaTitulo = "Todos os Responsáveis";
-class Responsaveis  extends StatelessWidget {
+const String _appTitle = "Todos Itens";
+const String _listaTitulo = "Todos os Itens";
 
-    @override
+class Itens extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
     final Imovel imovel = ModalRoute.of(context).settings.arguments != null
         ? ModalRoute.of(context).settings.arguments
@@ -32,7 +33,7 @@ class Responsaveis  extends StatelessWidget {
                   _listaTitulo,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 30,
+                    fontSize: 34,
                   ),
                 ),
               ],
@@ -42,7 +43,7 @@ class Responsaveis  extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-              width: MediaQuery.of(context).size.width - 50,
+                  width: MediaQuery.of(context).size.width - 50,
                   height: MediaQuery.of(context).size.height- 150,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15),
@@ -56,7 +57,7 @@ class Responsaveis  extends StatelessWidget {
                           margin: EdgeInsets.all(6),
                           height: 25,
                           color: Colors.grey[400],
-                          child: Center(child: Text('${items[index].responsavel}')),
+                          child: Center(child: Text('${items[index].nome}')),
                         );
                       })),
             ],

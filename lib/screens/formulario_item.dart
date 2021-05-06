@@ -4,6 +4,11 @@ import 'package:app_momoveis/model/item.dart';
 import 'package:flutter/material.dart';
 
 const String _appBarTitle = "Formulario";
+const String _titulo = "Registrar Item";
+const String _lblNome = "Nome";
+const String _lblResponsavel = "Responsável";
+const String _btnRegistrar = "Registrar";
+const String _msgSucesso = "Item registrado com sucesso";
 
 class FormularioItem extends StatefulWidget {
   @override
@@ -15,7 +20,6 @@ enum ItemTamanho { pequeno, medio, grande }
 class _FormularioItemState extends State<FormularioItem> {
 
 
-
   ItemTamanho _tamanho = ItemTamanho.medio;
   bool _checkedValue = false;
   final TextEditingController _controllerItemNome = new TextEditingController();
@@ -25,8 +29,6 @@ class _FormularioItemState extends State<FormularioItem> {
 
   @override
   Widget build(BuildContext context) {
-
-    final Grupo _grupo = ModalRoute.of(context).settings.arguments;
 
 
     return Scaffold(
@@ -43,7 +45,7 @@ class _FormularioItemState extends State<FormularioItem> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Registrar Item",
+                       _titulo,
                         style: TextStyle(fontSize: 34, color: Colors.white),
                       ),
                     ],
@@ -51,7 +53,7 @@ class _FormularioItemState extends State<FormularioItem> {
                   padding: EdgeInsets.all(30),
                 ),
                 CampoFormulario(
-                  label: "Nome",
+                  label: _lblNome,
                   controller: _controllerItemNome,
                 ),
                 Row(
@@ -77,7 +79,7 @@ class _FormularioItemState extends State<FormularioItem> {
                   ],
                 ),
                 CampoFormulario(
-                  label: "Resposável",
+                  label: _lblResponsavel,
                   controller: _controllerResponsavelNome,
                 ),
                 SizedBox(
@@ -96,18 +98,20 @@ class _FormularioItemState extends State<FormularioItem> {
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(12.0),
                                     side: BorderSide(color: Colors.white)))),
-                        child: Text("Registrar"),
-                        onPressed: () => _registrar(context,  _grupo))),
+                        child: Text(_btnRegistrar),
+                        onPressed: () => _registrar(context))),
               ],
             )));
   }
 
-  _registrar(BuildContext context, Grupo grupo) {
+  _registrar(BuildContext context) {
     if (_formKey.currentState.validate()) {
       final snackBar = SnackBar(
-        content: Text('Registrado!'),
+        content: Text(_msgSucesso),
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+
 
       String nome = _controllerItemNome.text;
       String responsavel = _controllerResponsavelNome.text;
@@ -115,12 +119,7 @@ class _FormularioItemState extends State<FormularioItem> {
       bool novo = _checkedValue;
 
       Item item = new Item(nome, responsavel, tamanho, novo);
-
-      grupo.items.add(item);
-      debugPrint("Grupo: " + grupo.toString());
-
-      Navigator.popAndPushNamed(context, '/grupo/local', arguments: grupo);
-
+      Navigator.pop(context, item);
     }
   }
 

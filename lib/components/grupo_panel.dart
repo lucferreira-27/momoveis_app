@@ -7,7 +7,7 @@ class GrupoPanel extends StatelessWidget {
   final double height;
   final double weight;
   final bool label;
-  GrupoPanel({this.grupo, this.onTap, this.height = 230, this.weight = 350, this.label = true});
+  GrupoPanel({this.grupo, this.onTap, this.height = 230, this.weight = 320, this.label = true});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class GrupoPanel extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(5),
       onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
+      child: Container(
+        margin: const EdgeInsets.all(5.0),
         child: grupoPanel,
       ),
     );

@@ -40,6 +40,7 @@ dev_dependencies:
 flutter:
   assets:
     - images/logo.png
+    - images/dev.png
     - images/grupos/escritorio.png    
     - images/grupos/sala.png
     - images/grupos/quintal.png

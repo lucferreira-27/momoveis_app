@@ -1,11 +1,11 @@
-
-
 import 'package:app_momoveis/screens/formulario_item.dart';
 import 'package:app_momoveis/screens/home.dart';
+import 'package:app_momoveis/screens/itens.dart';
 import 'package:app_momoveis/screens/local.dart';
 import 'package:app_momoveis/screens/login.dart';
 import 'package:app_momoveis/screens/moveis_grupo.dart';
 import 'package:app_momoveis/screens/responsaveis.dart';
+import 'package:app_momoveis/screens/sobre.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,11 +29,12 @@ class MomoveisApp extends StatelessWidget {
       routes: {
         '/login': (context) => Login(),
         '/home': (context) => Home(),
-        '/grupo': (context) => GrupoMoveis(),
-        '/grupo/local': (context) => GrupoLocal(),
+        '/grupos': (context) => GrupoMoveis(),
+        '/local': (context) => GrupoLocal(),
         '/responsaveis': (context) => Responsaveis(),
+        '/itens': (context) => Itens(),
         '/formulario': (context) => FormularioItem(),
-
+        '/sobre': (context) => Sobre(),
       },
     );
   }
