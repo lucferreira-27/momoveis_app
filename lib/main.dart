@@ -16,6 +16,7 @@ class MomoveisApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color.fromRGBO(14, 77, 164, 1),
         accentColor: Color.fromRGBO(38, 50, 56, 1),

@@ -4,7 +4,7 @@ import 'package:app_momoveis/model/usuario.dart';
 import 'package:flutter/material.dart';
 
 const String _appBarTitle = "Menu";
-const String _itemGrupoMoveis = "Grupo Móveis";
+const String _itemGrupoMoveis = "Local";
 const String _itemResponsaveis = "Responsaveis";
 
 class Home extends StatefulWidget {
