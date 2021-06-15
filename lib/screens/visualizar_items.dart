@@ -13,7 +13,7 @@ class VisualizarItems extends StatefulWidget {
 
 class _VisualizarItemsState extends State<VisualizarItems> {
   CollectionReference items;
-  
+
   @override
   void initState() {
     super.initState();
@@ -83,7 +83,7 @@ class _VisualizarItemsState extends State<VisualizarItems> {
         itemBuilder: (BuildContext context, int index) {
           return Container(
             margin: EdgeInsets.all(6),
-            height: 25,
+            height: 35,
             color: Colors.grey[400],
             child: mostrarDadosDoItem(dados.docs[index]),
           );
@@ -92,6 +92,47 @@ class _VisualizarItemsState extends State<VisualizarItems> {
 
   Widget mostrarDadosDoItem(item) {
     ItemDao itemDao = ItemDao.fromJson(item.data(), item.id);
-    return Center(child: Text('${itemDao.nome}'));
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Padding(
+            padding: EdgeInsets.only(right: 90),
+            child: Center(child: Text('${itemDao.nome}'))),
+        IconButton(
+            onPressed: () {
+                  debugPrint("${itemDao.id}  ${itemDao.toJson()}");
+
+              removeItem(itemDao);
+            },
+            icon: Icon(Icons.delete)),
+        IconButton(
+            onPressed: () {
+                  debugPrint("${itemDao.id}  ${itemDao.toJson()}");
+
+              editItem(itemDao);
+            },
+            icon: Icon(Icons.edit))
+      ],
+    );
+  }
+
+  removeItem(itemDao) {
+    items.doc(itemDao.id).delete();
+  }
+  salvarItem(itemDao){
+    items.doc(itemDao.id).update(itemDao.toJson());
+    }
+  editItem(itemDao) {
+              Navigator.pushNamed(context, '/editarItem', arguments: itemDao).then((itemRecebido) => {
+               
+                setState(() => {
+                  
+                      if (itemRecebido != null)
+                        {
+                          salvarItem(itemRecebido)
+                        }
+                    })
+                    
+              });
   }
 }

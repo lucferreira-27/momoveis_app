@@ -1,3 +1,4 @@
+import 'package:app_momoveis/screens/editar_item.dart';
 import 'package:app_momoveis/screens/formulario_item.dart';
 import 'package:app_momoveis/screens/home.dart';
 import 'package:app_momoveis/screens/local.dart';
@@ -39,6 +40,7 @@ class MomoveisApp extends StatelessWidget {
         '/responsaveis': (context) => Responsaveis(),
         '/itens': (context) => VisualizarItems(),
         '/formulario': (context) => FormularioItem(),
+        '/editarItem': (context) => EditarItem(),
         '/sobre': (context) => Sobre(),
       },
     );
