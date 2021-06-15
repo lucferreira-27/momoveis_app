@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "459777140423",
+    "project_id": "momoveis-app",
+    "storage_bucket": "momoveis-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459777140423:android:f5e9ea3bb58e345cbc00e2",
+        "android_client_info": {
+          "package_name": "com.example.app_momoveis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459777140423-15rson7n6erftpj86lkac47eife7m5bg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMqp22v0VBCjpqxNiW4baGJCqhjPPHloQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459777140423-15rson7n6erftpj86lkac47eife7m5bg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:459777140423:android:a58d74e81aaad000bc00e2",
+        "android_client_info": {
+          "package_name": "com.lucas.ferreira.momoveis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "459777140423-15rson7n6erftpj86lkac47eife7m5bg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMqp22v0VBCjpqxNiW4baGJCqhjPPHloQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "459777140423-15rson7n6erftpj86lkac47eife7m5bg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

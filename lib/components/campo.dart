@@ -10,8 +10,8 @@ class Campo extends StatelessWidget {
 
   Campo(
       {this.label,
-      this.controller,
       this.hide = false,
+      this.controller,
       this.validatorDefault = true,
       this.campoValidator});
 

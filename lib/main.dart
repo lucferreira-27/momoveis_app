@@ -1,15 +1,19 @@
 import 'package:app_momoveis/screens/formulario_item.dart';
 import 'package:app_momoveis/screens/home.dart';
-import 'package:app_momoveis/screens/itens.dart';
 import 'package:app_momoveis/screens/local.dart';
 import 'package:app_momoveis/screens/login.dart';
-import 'package:app_momoveis/screens/moveis_grupo.dart';
+import 'package:app_momoveis/screens/visualizar_grupos.dart';
 import 'package:app_momoveis/screens/responsaveis.dart';
 import 'package:app_momoveis/screens/sobre.dart';
 import 'package:flutter/material.dart';
+import 'screens/visualizar_items.dart';
 
-void main() {
-  runApp(MomoveisApp());
+void main()  {
+ // WidgetsFlutterBinding.ensureInitialized();
+ // await Firebase.initializeApp();
+
+ runApp(MomoveisApp());
+
 }
 
 class MomoveisApp extends StatelessWidget {
@@ -33,7 +37,7 @@ class MomoveisApp extends StatelessWidget {
         '/grupos': (context) => GrupoMoveis(),
         '/local': (context) => GrupoLocal(),
         '/responsaveis': (context) => Responsaveis(),
-        '/itens': (context) => Itens(),
+        '/itens': (context) => VisualizarItems(),
         '/formulario': (context) => FormularioItem(),
         '/sobre': (context) => Sobre(),
       },

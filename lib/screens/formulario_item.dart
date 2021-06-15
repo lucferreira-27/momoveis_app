@@ -1,4 +1,5 @@
 import 'package:app_momoveis/components/campo_formulario.dart';
+import 'package:app_momoveis/model/dao/item_dao.dart';
 import 'package:app_momoveis/model/grupo.dart';
 import 'package:app_momoveis/model/item.dart';
 import 'package:flutter/material.dart';
@@ -118,7 +119,7 @@ class _FormularioItemState extends State<FormularioItem> {
       ItemTamanho tamanho = _tamanho;
       bool novo = _checkedValue;
 
-      Item item = new Item(nome, responsavel, tamanho, novo);
+      ItemDao item = new ItemDao(nome, responsavel, tamanho.toString().split('.').last, novo);
       Navigator.pop(context, item);
     }
   }

@@ -1,8 +1,9 @@
+import 'package:app_momoveis/model/dao/grupo_dao.dart';
 import 'package:app_momoveis/model/grupo.dart';
 import 'package:flutter/material.dart';
 
 class GrupoPanel extends StatelessWidget {
-  final Grupo grupo;
+  final GrupoDao grupo;
   final Function onTap;
   final double height;
   final double weight;
