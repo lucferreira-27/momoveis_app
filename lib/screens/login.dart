@@ -1,13 +1,17 @@
 import 'package:app_momoveis/components/campo.dart';
+import 'package:app_momoveis/model/service/auth.dart';
+import 'package:app_momoveis/model/dao/usuario_dao.dart';
 import 'package:app_momoveis/model/usuario.dart';
 import 'package:flutter/material.dart';
 
 const String _appBarTitle = "Login";
 const String _btnLogin = "Login";
-const String _lblUsuario = "Usuário";
+const String _btnCadastro = "Cadastrar";
+const String _lblUsuario = "Email";
 const String _lblSenha = "Senha";
 
 const String _logoCaminho = "images/logo.png";
+Auth auth = new Auth();
 
 class Login extends StatelessWidget {
   final TextEditingController _controllerUsuario = new TextEditingController();
@@ -41,7 +45,7 @@ class Login extends StatelessWidget {
                       if (value == null || value.isEmpty) {
                         return 'Campo não pode estar vazio!';
                       } else if (_verificaUsuario(value)) {
-                        _usuario.username = value;
+                        _usuario.email = value;
                         return null;
                       }
                       return "{$_lblUsuario} incorreto!";
@@ -73,6 +77,22 @@ class Login extends StatelessWidget {
                                   TextStyle(fontSize: 25))),
                           child: Text(_btnLogin),
                           onPressed: () => _login(context))),
+                  Padding(
+                    padding: EdgeInsets.only(top: 10),
+                    child: SizedBox(
+                        width: 175,
+                        height: 32,
+                        child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all(Colors.blue),
+                                padding: MaterialStateProperty.all(
+                                    EdgeInsets.only(top: 10)),
+                                textStyle: MaterialStateProperty.all(
+                                    TextStyle(fontSize: 16))),
+                            child: Text(_btnCadastro),
+                            onPressed: () => _cadastrar(context))),
+                  )
                 ]),
               ),
             )
@@ -82,9 +102,22 @@ class Login extends StatelessWidget {
     );
   }
 
+  _cadastrar(context) {
+    Navigator.pushNamed(context, '/cadastro');
+  }
+
   _login(BuildContext context) {
     if (_formKey.currentState.validate()) {
-      Navigator.pushNamed(context, '/home', arguments: _usuario);
+      String senha = _controllerSenha.text;
+      String email = _usuario.email;
+
+      auth.login(email, senha, (result) {
+        Navigator.pushNamed(context, '/home', arguments: _usuario);
+        _exibirMensagemDeSucessoLogin(email, context);
+      }, (error) {
+        var msg = _loginInformarErro(error.code);
+        return _exibirMensagemDeFalhoLogin(msg, context);
+      });
     }
   }
 
@@ -108,5 +141,28 @@ class Login extends StatelessWidget {
   
   */
     return true;
+  }
+
+  _exibirMensagemDeSucessoLogin(email, context) {
+    String snackMsg = "Bem-vindo " + email;
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(snackMsg)));
+  }
+
+  _exibirMensagemDeFalhoLogin(msg, context) {
+    String snackMsg = "Falhou: " + msg;
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(snackMsg)));
+  }
+
+  String _loginInformarErro(erro) {
+    var msg = '';
+
+    if (erro == 'user-not-foud') {
+      msg = "Usuário não existe!";
+    } else {
+      msg = "Senha ou/e Email incorretos";
+    }
+    return msg;
   }
 }

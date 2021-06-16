@@ -1,5 +1,6 @@
 import 'package:app_momoveis/model/dao/item_dao.dart';
 import 'package:app_momoveis/model/movel.dart';
+import 'package:app_momoveis/model/service/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class _VisualizarItemsState extends State<VisualizarItems> {
   @override
   void initState() {
     super.initState();
-    items = FirebaseFirestore.instance.collection("moveis");
+    items = Database.resgatarCollection('moveis');
   }
 
   @override
@@ -100,15 +101,11 @@ class _VisualizarItemsState extends State<VisualizarItems> {
             child: Center(child: Text('${itemDao.nome}'))),
         IconButton(
             onPressed: () {
-                  debugPrint("${itemDao.id}  ${itemDao.toJson()}");
-
               removeItem(itemDao);
             },
             icon: Icon(Icons.delete)),
         IconButton(
             onPressed: () {
-                  debugPrint("${itemDao.id}  ${itemDao.toJson()}");
-
               editItem(itemDao);
             },
             icon: Icon(Icons.edit))
@@ -117,11 +114,11 @@ class _VisualizarItemsState extends State<VisualizarItems> {
   }
 
   removeItem(itemDao) {
-    items.doc(itemDao.id).delete();
+    Database.deletarDocumentoComReferencia(items, itemDao.id);
   }
   salvarItem(itemDao){
-    items.doc(itemDao.id).update(itemDao.toJson());
-    }
+      Database.atualizarDocumentoComReferencia(items, itemDao.id, itemDao.toJson());
+  }
   editItem(itemDao) {
               Navigator.pushNamed(context, '/editarItem', arguments: itemDao).then((itemRecebido) => {
                

@@ -1,10 +1,11 @@
+import 'package:app_momoveis/screens/cadastro.dart';
 import 'package:app_momoveis/screens/editar_item.dart';
 import 'package:app_momoveis/screens/formulario_item.dart';
 import 'package:app_momoveis/screens/home.dart';
 import 'package:app_momoveis/screens/local.dart';
 import 'package:app_momoveis/screens/login.dart';
 import 'package:app_momoveis/screens/visualizar_grupos.dart';
-import 'package:app_momoveis/screens/responsaveis.dart';
+import 'package:app_momoveis/screens/visualizar_responsaveis.dart';
 import 'package:app_momoveis/screens/sobre.dart';
 import 'package:flutter/material.dart';
 import 'screens/visualizar_items.dart';
@@ -34,6 +35,7 @@ class MomoveisApp extends StatelessWidget {
       initialRoute: '/login',
       routes: {
         '/login': (context) => Login(),
+        '/cadastro': (context) => Cadastro(),
         '/home': (context) => Home(),
         '/grupos': (context) => GrupoMoveis(),
         '/local': (context) => GrupoLocal(),

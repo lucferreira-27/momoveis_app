@@ -20,7 +20,6 @@ class _GrupoLocalState extends State<GrupoLocal> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("Build: GrupoLocalState");
 
     grupoDao = ModalRoute.of(context).settings.arguments;
 
@@ -148,7 +147,6 @@ class _GrupoLocalState extends State<GrupoLocal> {
   }
 
    bool itemPerteceLocal(ItemDao itemDao){
-      debugPrint("${itemDao.local.toLowerCase()} == ${grupoDao.nome.toLowerCase()}");
       return itemDao.local.toLowerCase() == grupoDao.nome.toLowerCase();
   }
 

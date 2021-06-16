@@ -1,18 +1,17 @@
 import 'package:app_momoveis/components/grupo_panel.dart';
 import 'package:app_momoveis/model/dao/grupo_dao.dart';
-import 'package:app_momoveis/model/grupo.dart';
 import 'package:app_momoveis/model/imovel.dart';
+import 'package:app_momoveis/model/service/database.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class GrupoMoveis extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    debugPrint("Build: GrupoMoveis");
     final Imovel imovel = ModalRoute.of(context).settings.arguments != null
         ? ModalRoute.of(context).settings.arguments
         : new Imovel([]);
-  final CollectionReference locais = FirebaseFirestore.instance.collection("locais");
+  final CollectionReference locais = Database.resgatarCollection("locais");
     return Scaffold(
       appBar: AppBar(
         title: Text("Grupo Movéis"),
@@ -67,7 +66,6 @@ class GrupoMoveis extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         itemCount: dados.size,
         itemBuilder: (BuildContext context, int index) {
-          debugPrint(dados.docs[index]['imagem']);
           return _criarGrupoPanel(context, new GrupoDao(null, dados.docs[index]['nome'], dados.docs[index]['imagem']));
     });
   }

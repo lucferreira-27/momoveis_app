@@ -1,5 +1,6 @@
 import 'package:app_momoveis/components/menu_item.dart';
 import 'package:app_momoveis/model/imovel.dart';
+import 'package:app_momoveis/model/dao/usuario_dao.dart';
 import 'package:app_momoveis/model/usuario.dart';
 import 'package:flutter/material.dart';
 
@@ -17,8 +18,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final Usuario usuario = ModalRoute.of(context).settings.arguments;
     final Imovel imovel = new Imovel([]);
-    //   String username = usuario == null ? "unknow" : usuario.username;
-    String username = usuario.username;
+    String username = usuario.email;
 
     return Scaffold(
         appBar:
@@ -38,7 +38,8 @@ class _HomeState extends State<Home> {
                 ),
                 Text(
                   username,
-                  style: TextStyle(fontSize: 36),
+                  style: TextStyle(fontSize: 24),
+                  softWrap: true,
                 )
               ],
             ),
